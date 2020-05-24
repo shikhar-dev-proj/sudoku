@@ -1,0 +1,29 @@
+<div class="sudoku-board" *ngIf="board?.table?.length" (keypress)="onKeyPress($event)">
+
+  <p *ngIf="isValidSudoku && !isSolved" class="status valid">Board is Valid!</p>
+  <p *ngIf="!isValidSudoku && !isSolved" class="status invalid">You made a mistake!</p>
+  <p *ngIf="isSolved" class="status valid">Congratulations!</p>
+
+  <table class="table">
+    <ng-container *ngFor="let row of board.table; let i=index;">
+      <tr class="table-row">
+        <ng-container *ngFor="let col of row; let j=index">
+          <td class="grid" 
+            [ngClass]="{ 
+              'active': isActiveGrid(i,j), 
+              'med-dark': (i < 3 && j >= 3 && j < 6) || (i >= 3 && i < 6 && j < 3) || (i >= 3 && i < 6 && j >= 6) || (i >= 6 && j >= 3 && j < 6),
+              'dark': (i >= 3 && i < 6 && j >= 3 && j < 6),
+              'user-filled-grid': !isReadonlyGrid(i,j) 
+            }">
+            <span *ngIf="col?.value" class="grid-number" (keypress)="onKeyPress($event)">{{col.value}}</span>
+          </td>
+        </ng-container>
+      </tr>
+    </ng-container>
+  </table>
+  <br/><br/>
+  <div class="board-actions">
+    <button class="board-btn" [ngClass]="{'disabled-btn': isSolved}" (click)="solveCompletely()">SOLVE COMPLETE</button>
+    <button class="board-btn" [ngClass]="{'disabled-btn': isSolved}" (click)="solveIteratively()">SOLVE INCREMENTALLY</button>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+.sudoku-board {
+  text-align: center;
+  width: 41rem;
+  .status {
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .valid {
+    color: green;
+  }
+  .invalid {
+    color: #900c3e;
+  }
+  .table {
+    .table-row {
+      .grid {
+        height: 4rem;
+        width: 4rem;
+        padding: 2px;
+        background-color: #c80139;
+        border: 1px solid black;
+        border-radius: 4px;
+        text-align: center;
+        transition: all 0.5s;
+        color: white;
+        .grid-number {
+          font-size: 24px;
+        }
+      }
+      .med-dark {
+        background-color: #900c3e;
+      }
+      .dark {
+        background-color: #571844;
+      }
+      .user-filled-grid {
+        color: #ffc303;
+        font-weight: bold;
+      }
+      .active {
+        background-color: black;
+        border: 1px solid #c80139;
+      }
+    }
+  }
+  .board-actions {
+    display: inline-block;
+    .board-btn {
+      height: 2rem;
+      width: 10rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      border-radius: 4px;
+      outline:none;
+    }
+    .disabled-btn {
+      pointer-events: none;
+    }
+  }
+}
