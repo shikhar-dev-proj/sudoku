@@ -1,0 +1,13 @@
+<div class="home-container">
+  <div class="action-bar">
+    <span class="action-header">Select Game Level</span>
+    <div class="actions">
+      <button class="action-btn" [ngClass]="{ 'active-btn': level === 'easy' }" (click)="generateBoard('easy')">Easy</button>
+      <button class="action-btn" [ngClass]="{ 'active-btn': level === 'medium' }" (click)="generateBoard('medium')">Medium</button>
+      <button class="action-btn" [ngClass]="{ 'active-btn': level === 'hard' }" (click)="generateBoard('hard')">Hard</button>
+    </div>
+  </div>
+  <div class="game-container">
+    <app-sudoku-board *ngIf="sudokuPuzzle?.table?.length" [board]="sudokuPuzzle"></app-sudoku-board>
+  </div>
+</div>
