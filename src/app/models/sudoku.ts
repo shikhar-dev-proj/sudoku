@@ -33,7 +33,7 @@ export class Sudoku {
     initializeTable
   );
 
-  private removeKdigits(table: Array<Array<Grid>>) {
+  public removeKdigits(table: Array<Array<Grid>>) {
     const digitsToBeRemoved = Math.floor(this.complexity * table.length * table.length);
     let i = 0;
     while ( i <= digitsToBeRemoved ) {
