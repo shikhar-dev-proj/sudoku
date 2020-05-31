@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Sudoku, Difficulty, Grid } from 'src/app/models/sudoku';
 import { fromEvent } from 'rxjs';
 import { isNumber } from 'util';
-import { isValidSudoku, solveGenerator, isSolved, getDummyGrid, fillCompleteTable } from 'src/app/helpers/sudoku-util';
+import { isValidSudoku, solveGenerator, isSolved, getDummyGrid, fillCompleteTable, initializeTable, fillDiagonalBoxes, makePrefilledDigitsReadonly } from 'src/app/helpers/sudoku-util';
 import { clone } from 'ramda';
 
 @Component({
@@ -95,5 +95,25 @@ export class SudokuBoardComponent implements OnChanges, OnInit {
   solveCompletely() {
     fillCompleteTable(this.board.table);
     this.isSolved = isSolved(this.board.table);
+  }
+
+  initializeTable() {
+    this.board.table = initializeTable(9);
+  }
+
+  fillDiagonalBoxes() {
+    this.board.table = fillDiagonalBoxes(this.board.table);
+  }
+
+  fillAllBoxes() {
+    this.board.table = fillCompleteTable(this.board.table);
+  }
+
+  removeKDigits() {
+    this.board.table = this.board.removeKdigits(this.board.table);
+  }
+
+  setPrefilledReadOnly() {
+    this.board.table = makePrefilledDigitsReadonly(this.board.table);
   }
 }

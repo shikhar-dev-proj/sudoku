@@ -26,4 +26,11 @@
     <button class="board-btn" [ngClass]="{'disabled-btn': isSolved}" (click)="solveCompletely()">SOLVE COMPLETE</button>
     <button class="board-btn" [ngClass]="{'disabled-btn': isSolved}" (click)="solveIteratively()">SOLVE INCREMENTALLY</button>
   </div>
+  <div class="board-actions" style="margin-top: 1rem;">
+    <button (click)="initializeTable()">INITIALIZE</button>
+    <button (click)="fillDiagonalBoxes()">FILL DIAGONAL BOXES</button>
+    <button (click)="fillAllBoxes()">FILL ALL BOXES</button>
+    <button (click)="removeKDigits()">REMOVE SOME DIGITS</button>
+    <button (click)="setPrefilledReadOnly()">READONLY</button>
+  </div>
 </div>
